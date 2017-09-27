@@ -62,6 +62,11 @@ function eatGhost(ghost){
   lives -= 1
 }
 }
+function checkLife(){
+  if (lives === 0){
+  process.exit()
+}
+}
 
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
@@ -98,15 +103,19 @@ function processInput(key) {
       break;
       case'1':
     eatGhost(inky);
+    checkLife();
       break;
       case'2':
     eatGhost(blink);
+    checkLife();
       break;
       case'3':
     eatGhost(pinky);
+    checkLife();
       break;
       case'4':
     eatGhost(clyde);
+    checkLife();
       break;
 
     default:
