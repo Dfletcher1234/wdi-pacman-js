@@ -60,6 +60,7 @@ function displayStats() {
   '\n\Power Pellets: ' + powerPellets );
 }
 function eatGhost(ghost){
+  console.log('\n');
   if (ghost.edible === false){
   lives -= 1
 }
@@ -68,8 +69,10 @@ function eatGhost(ghost){
 function eatPowerPellet(){
   score += 50
   powerPellets -= 1
-  inky.edible === true
-
+  inky.edible = true;
+  blink.edible = true;
+  pinky.edible = true;
+  clyde.edible = true;
 
 }
 function checkLife(){
@@ -77,15 +80,30 @@ function checkLife(){
   process.exit()
 }
 }
+function isTrue(ghost) {
+  if (ghost.edible === true){
+    console.log( 'you just ate a happy ghost');
+    score += 200
+    ghost.edible = false
+  }
+
+}
 
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
-  console.log('(p) Eat Power-Pellet');
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blink');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
+  if (powerPellets < 1  ){
+
+  console.log("You are out of power pellets.")}
+  else{
+    console.log('(p) Eat Power-Pellet');
+
+
+  }
+  console.log('(1) Eat Inky'); + isEdible(inky)
+  console.log('(2) Eat Blink'); + isEdible(blink)
+  console.log('(3) Eat Pinky'); + isEdible(pinky)
+  console.log('(4) Eat Clyde'); + isEdible(clyde)
   console.log('(q) Quit');
 }
 
@@ -94,7 +112,13 @@ function displayPrompt() {
   process.stdout.write('\nWaka Waka :v '); // :v is the Pac-Man emoji.
 }
 
-
+function isEdible(ghost){
+  if (ghost.edible === true){
+    console.log('edible')}
+ else{
+   console.log('inedible');
+}
+}
 // Menu Options
 function eatDot() {
   console.log('\nChomp!');
@@ -116,20 +140,24 @@ function processInput(key) {
       eatPowerPellet();
       break;
       case'1':
-    eatGhost(inky);
-    checkLife();
+      eatGhost(inky);
+      isTrue(inky);
+      checkLife();
       break;
       case'2':
-    eatGhost(blink);
-    checkLife();
+      eatGhost(blink);
+      isTrue(inky);
+      checkLife();
       break;
       case'3':
-    eatGhost(pinky);
-    checkLife();
+      eatGhost(pinky);
+      isTrue(inky);
+      checkLife();
       break;
       case'4':
-    eatGhost(clyde);
-    checkLife();
+      eatGhost(clyde);
+      cisTrue(inky);
+      checkLife();
       break;
 
     default:
