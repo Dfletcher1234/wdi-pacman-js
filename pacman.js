@@ -64,6 +64,14 @@ function eatGhost(ghost){
   lives -= 1
 }
 }
+
+function eatPowerPellet(){
+  score += 50
+  powerPellets -= 1
+  inky.edible === true
+
+
+}
 function checkLife(){
   if (lives === 0){
   process.exit()
@@ -73,6 +81,7 @@ function checkLife(){
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(p) Eat Power-Pellet');
   console.log('(1) Eat Inky');
   console.log('(2) Eat Blink');
   console.log('(3) Eat Pinky');
@@ -102,6 +111,9 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+      case 'p':
+      eatPowerPellet();
       break;
       case'1':
     eatGhost(inky);
