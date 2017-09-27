@@ -12,7 +12,7 @@ var inky = {
   edible: false
 };
 
-var blinky = {
+var blink = {
 menu_option: '2',
 name: 'Blink',
 colour: 'Cyan',
@@ -32,7 +32,7 @@ menu_option: '4',
 name: 'Clyde',
 colour: 'Orange',
 character: 'Pokey',
-edibe: false
+edible: false
 }
 
 
@@ -56,6 +56,11 @@ function clearScreen() {
 
 function displayStats() {
   console.log('Score: ' + score + '     Lives: ' + lives);
+}
+function eatGhost(ghost){
+  if (ghost.edible === false){
+  lives -= 1
+}
 }
 
 function displayMenu() {
@@ -91,6 +96,19 @@ function processInput(key) {
     case 'd':
       eatDot();
       break;
+      case'1':
+    eatGhost(inky);
+      break;
+      case'2':
+    eatGhost(blink);
+      break;
+      case'3':
+    eatGhost(pinky);
+      break;
+      case'4':
+    eatGhost(clyde);
+      break;
+
     default:
       console.log('\nInvalid Command!');
   }
